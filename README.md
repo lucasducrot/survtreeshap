@@ -1,6 +1,6 @@
 # SurvTreeSHAP
 
-**SurvTreeSHAP** is a Python package for interpreting tree-based survival models at scale. It extends SurvSHAP(t) explanations addressing the computational bottlenecks. Based on TreeSHAP, this tool takes advantage of the tree structure to provide fast and scalable survival prediction explanations in high-dimensional settings.
+**SurvTreeSHAP** is a Python package for interpreting tree-based survival models at scale. It extends SurvSHAP(t) explanations addressing the computational bottlenecks with the TreeSHAP algorithm. It takes advantage of the tree structure and provide fast and scalable survival prediction explanations in high-dimensional settings.
 
 ## 🔧 Installation
 
