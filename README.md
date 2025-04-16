@@ -1,17 +1,45 @@
-# ScalableSurvSHAP
+# SurvTreeSHAP
 
-**ScalableSurvSHAP** is a Python package for interpreting tree-based survival models at scale. It extends SHAP-based explanations to survival analysis while addressing the computational bottlenecks of existing approaches like SurvSHAP. This tool is specifically designed for Random Survival Forests and Gradient Boosted Survival Trees, enabling efficient and interpretable survival prediction explanations in high-dimensional settings.
+**SurvTreeSHAP** is a Python package for interpreting tree-based survival models at scale. It extends SHAP-based explanations to survival analysis while addressing the computational bottlenecks of existing approaches like Kernel SurvSHAP. This tool is an extension of TreeSHAP and specifically designed for Random Survival Forests and Gradient Boosted Survival Trees, enabling efficient and interpretable survival prediction explanations in high-dimensional settings.
 
 ## 🚀 Features
 
-- ⚡ **Scalable SHAP explanations** for survival models trained on hundreds to thousands of covariates.
-- 🌳 **Model-specific support** for Random Survival Forests (RSF) and Gradient Boosted Survival Trees.
-- 📈 **Time-dependent feature attributions** for survival functions and cumulative hazard predictions.
-- 🧠 **Faithful to TreeSHAP and SurvSHAP** logic, with optimized implementation for speed and memory efficiency.
-- 🧪 Easy integration into survival model pipelines for clinical or biomedical applications.
+- 🌳 **Tree-based survival models**
+- ⚡ **Scalable SHAP explanations**
+- 📈 **Time-dependent feature attributions**
 
 ## 🔧 Installation
 
 ```bash
-pip install scalablesurvshap
+pip install survtreeshap
+
+## 📦 Supported Models
+
+- `scikit-survival` Random Survival Forests (`RandomSurvivalForest`)
+- `xgboost` or `lightgbm` survival models with appropriate loss functions
+- Custom survival tree models with SHAP-compatible APIs
+
+## 🧬 Example Usage
+
+```python
+from scalablesurvshap import SurvSHAPExplainer
+from sksurv.ensemble import RandomSurvivalForest
+from sksurv.datasets import load_whas500
+from sklearn.model_selection import train_test_split
+
+# Load example data
+X, y = load_whas500()
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Train a survival model
+model = RandomSurvivalForest(n_estimators=100).fit(X_train, y_train)
+
+# Create an explainer
+explainer = SurvSHAPExplainer(model, X_train)
+
+# Compute SHAP values for one or more individuals
+shap_values = explainer.explain(X_test.iloc[:10], time_horizon=365)
+
+# Plot results
+explainer.plot_summary(shap_values)
 
