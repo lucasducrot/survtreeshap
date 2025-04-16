@@ -1,0 +1,11 @@
+[project]
+name = "survtreeshap"
+version = "0.0.1"
+description = "Package for fast and scalable explanations of tree-based survival models"
+authors = [{ name="Lucas Ducrot", email="ducrot.lucas@gmail.com" }]
+readme = "README.md"
+requires-python = ">=3.8"
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
