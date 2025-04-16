@@ -13,6 +13,8 @@
 ```bash
 pip install survtreeshap
 
+```
+
 ## 📦 Supported Models
 
 - `scikit-survival` Random Survival Forests (`RandomSurvivalForest`)
@@ -42,4 +44,19 @@ shap_values = explainer.explain(X_test.iloc[:10], time_horizon=365)
 
 # Plot results
 explainer.plot_summary(shap_values)
+```
 
+## 🧪 Citation
+
+If you use this package in your research, please cite:
+
+@article{yourname2025scalablesurvshap,
+  title={Scalable SHAP-based Interpretation for Tree-based Survival Models},
+  author={Your Name and Collaborators},
+  journal={arXiv preprint arXiv:2504.xxxxx},
+  year={2025}
+}
+
+## 📄 License
+
+MIT License
