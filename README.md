@@ -1,12 +1,6 @@
 # SurvTreeSHAP
 
-**SurvTreeSHAP** is a Python package for interpreting tree-based survival models at scale. It extends SHAP-based explanations to survival analysis while addressing the computational bottlenecks of existing approaches like Kernel SurvSHAP. This tool is an extension of TreeSHAP and specifically designed for Random Survival Forests and Gradient Boosted Survival Trees, enabling efficient and interpretable survival prediction explanations in high-dimensional settings.
-
-## 🚀 Features
-
-- 🌳 **Tree-based survival models**
-- ⚡ **Scalable SHAP explanations**
-- 📈 **Time-dependent feature attributions**
+**SurvTreeSHAP** is a Python package for interpreting tree-based survival models at scale. It extends SurvSHAP(t) explanations addressing the computational bottlenecks. Based on TreeSHAP, this tool takes advantage of the tree structure to provide fast and scalable survival prediction explanations in high-dimensional settings.
 
 ## 🔧 Installation
 
@@ -19,12 +13,11 @@ pip install survtreeshap
 
 - `scikit-survival` Random Survival Forests (`RandomSurvivalForest`)
 - `xgboost` or `lightgbm` survival models with appropriate loss functions
-- Custom survival tree models with SHAP-compatible APIs
 
-## 🧬 Example Usage
+## 💡 Example Usage
 
 ```python
-from scalablesurvshap import SurvSHAPExplainer
+from survtreeshap import SurvSHAPExplainer
 from sksurv.ensemble import RandomSurvivalForest
 from sksurv.datasets import load_whas500
 from sklearn.model_selection import train_test_split
@@ -46,7 +39,7 @@ shap_values = explainer.explain(X_test.iloc[:10], time_horizon=365)
 explainer.plot_summary(shap_values)
 ```
 
-## 🧪 Citation
+## 📚 Citation
 
 If you use this package in your research, please cite:
 
