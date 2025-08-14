@@ -2,12 +2,6 @@
 
 **SurvTreeSHAP** is a Python package for interpreting tree-based survival models at scale. It extends SurvSHAP(t) explanations addressing the computational bottlenecks with the TreeSHAP algorithm. It takes advantage of the tree structure and provide fast and scalable survival prediction explanations in high-dimensional settings.
 
-## 🔧 Installation
-
-```bash
-pip install survtreeshap
-
-```
 
 ## 📦 Supported Models
 
@@ -16,40 +10,25 @@ pip install survtreeshap
 
 ## 💡 Example Usage
 
-```python
-from survtreeshap import SurvSHAPExplainer
-from sksurv.ensemble import RandomSurvivalForest
-from sksurv.datasets import load_whas500
-from sklearn.model_selection import train_test_split
-
-# Load example data
-X, y = load_whas500()
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-
-# Train a survival model
-model = RandomSurvivalForest(n_estimators=100).fit(X_train, y_train)
-
-# Create an explainer
-explainer = SurvSHAPExplainer(model, X_train)
-
-# Compute SHAP values for one or more individuals
-shap_values = explainer.explain(X_test.iloc[:10], time_horizon=365)
-
-# Plot results
-explainer.plot_summary(shap_values)
-```
+See examples in jupyter notebooks for simulations and real dataset GBSG
 
 ## 📚 Citation
 
 If you use this package in your research, please cite:
 
-@article{yourname2025scalablesurvshap,
-  title={Scalable SHAP-based Interpretation for Tree-based Survival Models},
-  author={Your Name and Collaborators},
-  journal={arXiv preprint arXiv:2504.xxxxx},
-  year={2025}
+@inproceedings{ducrot:hal-05108033,
+  TITLE = {{SurvTreeSHAP(t) : scalable explanation method for tree-based survival models}},
+  AUTHOR = {Ducrot, Lucas and Fevry, Gilles and Dano, Clement and Texier, Raphael and Murris, Juliette and Katsahian, Sandrine},
+  URL = {https://hal.science/hal-05108033},
+  BOOKTITLE = {{Workshop on Explainable Artificial Intelligence (XAI), IJCAI 2025}},
+  ADDRESS = {Montreal, Canada},
+  YEAR = {2025},
+  MONTH = Aug,
+  KEYWORDS = {Medical applications ; Machine learning ; TreeSHAP ; SurvSHAP ; SHAP ; Explainability ; Interpretability ; Tree-based model ; Survival analysis},
+  PDF = {https://hal.science/hal-05108033v1/file/SurvTreeSHAP___scalable_explanation_method_for_tree_based_survival_models.pdf},
+  HAL_ID = {hal-05108033},
+  HAL_VERSION = {v1},
 }
-
 ## 📄 License
 
-MIT License
+GNU GPL v3
